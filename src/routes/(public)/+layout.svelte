@@ -1,5 +1,6 @@
 <script>
   import '../../app.css'
+  import { signIn } from '@auth/sveltekit/client'
 </script>
 
 <header>
@@ -8,7 +9,7 @@
   <nav>
     <a href="/">Home</a>
     <a href="/pricing">Pricing</a>
-    <button>Sign in</button>
+    <button on:click|preventDefault={() => signIn('github', { callbackUrl: '/dashboard'})}>Sign in</button>
   </nav>
 </header>
 

@@ -1,5 +1,7 @@
 <script>
   import '../../app.css'
+  import { signOut } from '@auth/sveltekit/client'
+  import { user } from '$lib/stores'
 </script>
 
 <header>
@@ -8,7 +10,7 @@
   <nav>
     <a href="/dashboard">Home</a>
     <a href="/billing">Billing</a>
-    <button>Sign out</button>
+    <button on:click|preventDefault={signOut}>Sign out</button>
   </nav>
 </header>
 
