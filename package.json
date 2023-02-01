@@ -10,6 +10,9 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@auth/core": "^0.3.0",
+		"@auth/sveltekit": "^0.2.0",
+		"@next-auth/prisma-adapter": "^1.0.5",
 		"@prisma/client": "^4.9.0",
 		"@sveltejs/adapter-auto": "^1.0.0",
 		"@sveltejs/kit": "^1.0.0",
