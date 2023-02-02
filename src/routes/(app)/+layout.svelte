@@ -10,7 +10,7 @@
   <nav>
     <a href="/dashboard">Home</a>
     <a href="/billing">Billing</a>
-    <button on:click|preventDefault={signOut}>Sign out</button>
+    <button on:click|preventDefault={() => signOut({callbackUrl: '/'})}>Sign out</button>
   </nav>
 </header>
 
