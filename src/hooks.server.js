@@ -3,8 +3,30 @@ import GitHub from '@auth/core/providers/github'
 import { env } from '$env/dynamic/private'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { db } from '$lib/db'
+import { redirect } from '@sveltejs/kit'
+import { sequence } from '@sveltejs/kit/hooks'
 
-export const handle = SvelteKitAuth({
+const protectedPaths = [
+	'/dashboard',
+	'/account'
+]
+
+async function protect({ event, resolve }) {
+	if (!protectedPaths.includes(event.url.pathname)) {
+		return resolve(event)
+	}
+
+	const session = await event.locals.getSession()
+
+	if (!session?.user) {
+		throw redirect(303, "/auth/signin")
+	}
+
+	return resolve(event)
+
+}
+
+const authenticate = SvelteKitAuth({
 	adapter: PrismaAdapter(db),
 	providers: [
 		GitHub({
@@ -19,3 +41,8 @@ export const handle = SvelteKitAuth({
 		}
 	}
 })
+
+export const handle = sequence(
+	authenticate,
+	protect
+)
