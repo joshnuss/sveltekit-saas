@@ -23,7 +23,11 @@
 		"prettier-plugin-svelte": "^2.8.1",
 		"prisma": "^4.9.0",
 		"svelte": "^3.54.0",
-		"vite": "^4.0.0"
+		"vite": "^4.0.0",
+		"vite-node": "^0.28.4"
 	},
-	"type": "module"
+	"type": "module",
+	"prisma": {
+		"seed": "vite-node ./prisma/seed.js"
+	}
 }

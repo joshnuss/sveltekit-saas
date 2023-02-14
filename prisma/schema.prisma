@@ -45,6 +45,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  planId Int?
+  plan Plan? @relation(fields: [planId], references: [id])
 }
 
 model VerificationToken {
@@ -53,4 +55,13 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Plan {
+  id Int @id @default(autoincrement())
+  handle String @unique
+  name String
+  price Int
+  priceId String
+  users User[]
 }
