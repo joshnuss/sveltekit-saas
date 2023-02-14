@@ -7,3 +7,9 @@ export function all() {
 		]
 	})	
 }
+
+export function get(id) {
+	return db.plan.findUnique({
+		where: { id }
+	})
+}

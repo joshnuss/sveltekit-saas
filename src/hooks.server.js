@@ -5,6 +5,7 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { db } from '$lib/db'
 import { redirect } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
+import * as plans from '$lib/services/plans'
 
 const protectedPaths = [
 	'/dashboard',
@@ -38,6 +39,15 @@ const authenticate = SvelteKitAuth({
 		// temporary workaround
 		generateSessionToken() {
 			return crypto.randomUUID()
+		}
+	},
+	callbacks: {
+		async session({session, user}) {
+			if (user.planId) {
+				session.plan = await plans.get(user.planId)
+			}
+
+			return session
 		}
 	}
 })
