@@ -8,7 +8,18 @@ export function authenticated(handler) {
 			throw redirect(303, "/auth/signin")
 		}
 
-		return handler()
+		return handler(event)
 	}
 }
 
+export function member(handler) {
+	return async (event) => {
+		const session = await event.locals.getSession()
+
+		if (session.plan?.handle != 'enterprise') {
+			throw redirect(403, "Enterprise plan is required")
+		}
+
+		return handler(event)
+	}
+}

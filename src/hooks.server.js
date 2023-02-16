@@ -3,7 +3,7 @@ import GitHub from '@auth/core/providers/github'
 import { env } from '$env/dynamic/private'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { db } from '$lib/db'
-import { redirect } from '@sveltejs/kit'
+import { redirect, error } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
 import * as plans from '$lib/services/plans'
 
@@ -21,6 +21,25 @@ async function protect({ event, resolve }) {
 
 	if (!session?.user) {
 		throw redirect(303, "/auth/signin")
+	}
+
+	return resolve(event)
+
+}
+
+const enterprisePaths = [
+	'/advanced-feature',
+]
+
+async function enterpriseOnly({ event, resolve }) {
+	if (!enterprisePaths.includes(event.url.pathname)) {
+		return resolve(event)
+	}
+
+	const session = await event.locals.getSession()
+
+	if (session?.plan?.handle != 'enterprise') {
+		throw error(403, "Enterprise plan is required")
 	}
 
 	return resolve(event)
@@ -54,5 +73,6 @@ const authenticate = SvelteKitAuth({
 
 export const handle = sequence(
 	authenticate,
-	protect
+	protect,
+	enterpriseOnly
 )
