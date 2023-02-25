@@ -6,7 +6,7 @@
 
 <h1>Dashboard</h1>
 
-{#if $plan.handle != 'enterprise'}
+{#if $plan != 'enterprise'}
   Please upgrade to the enterprise plan!
 {/if}
 

@@ -9,7 +9,9 @@ export function all() {
 }
 
 export function get(id) {
-	return db.plan.findUnique({
-		where: { id }
-	})
+	return getBy({ id })
+}
+
+export function getBy(where) {
+	return db.plan.findUnique({ where })
 }

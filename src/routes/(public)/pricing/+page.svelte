@@ -1,8 +1,12 @@
 <script>
+  import { signIn } from '@auth/sveltekit/client'
+
   export let data
 
   function choose(plan) {
-    // TODO
+    signIn('github', {
+      callbackUrl: `/checkout?plan=${plan.handle}`
+    })
   }
 </script>
 
