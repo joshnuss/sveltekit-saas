@@ -50,10 +50,10 @@ model User {
 
   customerId String?
   subscriptionId String?
-  status SubsciptionStatus?
+  status SubscriptionStatus?
 }
 
-enum SubsciptionStatus {
+enum SubscriptionStatus {
   INCOMPLETE
   INCOMPLETE_EXPIRED
   TRIALING
