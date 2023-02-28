@@ -47,6 +47,20 @@ model User {
   sessions      Session[]
   planId Int?
   plan Plan? @relation(fields: [planId], references: [id])
+
+  customerId String?
+  subscriptionId String?
+  status SubsciptionStatus?
+}
+
+enum SubsciptionStatus {
+  INCOMPLETE
+  INCOMPLETE_EXPIRED
+  TRIALING
+  ACTIVE
+  PAST_DUE
+  CANCELED
+  UNPAID
 }
 
 model VerificationToken {
@@ -62,6 +76,6 @@ model Plan {
   handle String @unique
   name String
   price Int
-  priceId String
+  priceId String @unique
   users User[]
 }
