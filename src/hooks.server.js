@@ -66,6 +66,8 @@ const authenticate = SvelteKitAuth({
 				session.plan = await plans.get(user.planId)
 			}
 
+			session.user.status = user.status
+
 			return session
 		}
 	}
