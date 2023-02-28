@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit'
+import { error, redirect } from '@sveltejs/kit'
 
 export function authenticated(handler) {
 	return async (event) => {
@@ -16,8 +16,8 @@ export function member(handler) {
 	return async (event) => {
 		const session = await event.locals.getSession()
 
-		if (session.plan?.handle != 'enterprise') {
-			throw redirect(403, "Enterprise plan is required")
+		if (!session.plan) {
+			throw error(403, 'Plan is required')
 		}
 
 		return handler(event)
