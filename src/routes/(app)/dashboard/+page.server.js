@@ -1,5 +1,5 @@
-import { authenticated } from '$lib/handlers';
+import { authenticated } from '$lib/handlers'
 
 export const load = authenticated(() => {
-	return { protectedData: 41 };
-});
+	return { protectedData: 41 }
+})

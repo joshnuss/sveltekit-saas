@@ -1,6 +1,6 @@
 <script>
-	import '../../app.css';
-	import { signIn } from '@auth/sveltekit/client';
+	import '../../app.css'
+	import { signIn } from '@auth/sveltekit/client'
 </script>
 
 <header>

@@ -1,7 +1,7 @@
 <script>
-	import { plan } from '$lib/stores';
+	import { plan } from '$lib/stores'
 
-	export let data;
+	export let data
 </script>
 
 <h1>Dashboard</h1>

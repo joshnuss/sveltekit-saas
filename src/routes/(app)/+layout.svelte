@@ -1,7 +1,7 @@
 <script>
-	import '../../app.css';
-	import { signOut } from '@auth/sveltekit/client';
-	import { user } from '$lib/stores';
+	import '../../app.css'
+	import { signOut } from '@auth/sveltekit/client'
+	import { user } from '$lib/stores'
 </script>
 
 <header>
