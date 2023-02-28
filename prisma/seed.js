@@ -1,4 +1,4 @@
-import { db } from '$lib/db'
+import { db } from '$lib/db';
 
 await db.plan.create({
 	data: {
@@ -7,7 +7,7 @@ await db.plan.create({
 		price: 1000,
 		priceId: 'price_1MZMOOCMfrcMFSmphbMLS3HN'
 	}
-})
+});
 
 await db.plan.create({
 	data: {
@@ -16,4 +16,4 @@ await db.plan.create({
 		price: 10000,
 		priceId: 'price_1MZMP5CMfrcMFSmpKAyvNHbV'
 	}
-})
+});

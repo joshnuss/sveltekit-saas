@@ -1,11 +1,13 @@
 body {
-  margin: 0;
-  font-family: Inter;
+	margin: 0;
+	font-family: Inter;
 }
 
 button {
-  cursor: pointer;
+	cursor: pointer;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
 }

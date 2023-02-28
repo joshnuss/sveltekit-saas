@@ -1,13 +1,13 @@
 <script>
-  import { plan } from '$lib/stores'
+	import { plan } from '$lib/stores';
 
-  export let data
+	export let data;
 </script>
 
 <h1>Dashboard</h1>
 
 {#if $plan != 'enterprise'}
-  Please upgrade to the enterprise plan!
+	Please upgrade to the enterprise plan!
 {/if}
 
 <pre>

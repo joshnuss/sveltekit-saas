@@ -1,25 +1,25 @@
-import { error, redirect } from '@sveltejs/kit'
+import { error, redirect } from '@sveltejs/kit';
 
 export function authenticated(handler) {
 	return async (event) => {
-		const session = await event.locals.getSession()
+		const session = await event.locals.getSession();
 
 		if (!session) {
-			throw redirect(303, "/auth/signin")
+			throw redirect(303, '/auth/signin');
 		}
 
-		return handler(event)
-	}
+		return handler(event);
+	};
 }
 
 export function member(handler) {
 	return async (event) => {
-		const session = await event.locals.getSession()
+		const session = await event.locals.getSession();
 
 		if (!session.plan) {
-			throw error(403, 'Plan is required')
+			throw error(403, 'Plan is required');
 		}
 
-		return handler(event)
-	}
+		return handler(event);
+	};
 }
