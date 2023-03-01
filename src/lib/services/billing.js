@@ -10,11 +10,8 @@ export async function createCheckout({ email }, plan) {
 	}
 
 	return stripe.checkout.sessions.create({
-		success_url: new URL(
-			'/welcome?checkout_session_id={CHECKOUT_SESSION_ID}',
-			env.DOMAIN
-		).toString(),
-		cancel_url: new URL('/pricing', env.DOMAIN).toString(),
+		success_url: absoluteURL('/welcome?checkout_session_id={CHECKOUT_SESSION_ID}'),
+		cancel_url: absoluteURL('/pricing'),
 		currency: 'usd',
 		mode: 'subscription',
 		customer_email: email,
@@ -52,4 +49,17 @@ export async function syncSubscription(subscriptionId) {
 		status: subscription.status.toUpperCase(),
 		planId: plan.id
 	})
+}
+
+export async function createPortalSession({ email }) {
+	const user = await users.getBy({ email })
+
+	return stripe.billingPortal.sessions.create({
+		customer: user.customerId,
+		return_url: absoluteURL('/dashboard')
+	})
+}
+
+function absoluteURL(path) {
+	return new URL(path, env.DOMAIN).toString()
 }
