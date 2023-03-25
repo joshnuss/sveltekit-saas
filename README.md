@@ -57,7 +57,7 @@ stripe listen --forward-to localhost:5173/integrations/stripe
 
 You can adjust the seed data in `prisma/seed.js` to use price ids from your Stripe account.
 
-To load seed data:
+To load seed data, run:
 
 ```sh
 prisma db seed
