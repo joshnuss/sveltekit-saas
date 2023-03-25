@@ -1,38 +1,42 @@
-# create-svelte
+# SvelteKit SaaS Demo
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Code examples from the video course [Build a SaaS with SvelteKit](https://joshuanussbaum.podia.com/build-a-saas-with-sveltekit)
+## Setup environment
 
-## Creating a project
+Copy example environment:
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+```sh
+cp .env.example .env
 ```
 
-## Developing
+Then, customize the `.env` file.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- `AUTH_SECRET`: secret for Auth.js. Can be generated using `openssl rand -base64 32`
+- `GITHUB_ID`: id for GitHub OAuth client
+- `GITHUB_SECRET`: secret for GitHub OAuth client
+- `SECRET_STRIPE_KEY`: Stripe API secret key
+- `STRIPE_WEBHOOK_SECRET`: Stripe secret for webhooks
 
-```bash
-npm run dev
+## Install the Stripe cli
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+Follow instructures for setting up the Stripe CLI:
+
+https://stripe.com/cli
+
+## Development mode
+
+Run the dev server
+
+```sh
+pnpm dev
 ```
 
-## Building
+Tunnel Stripe webhooks events to the local dev server:
 
-To create a production version of your app:
-
-```bash
-npm run build
+```sh
+stripe listen --forward-to localhost:5173/integrations/stripe
 ```
 
-You can preview the production build with `npm run preview`.
+## License
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+MIT
