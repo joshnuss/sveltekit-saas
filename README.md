@@ -12,7 +12,7 @@ Code examples from the video course [Build a SaaS with SvelteKit](https://joshua
 
 ## Setup
 
-Start by copying the example environment:
+Start by copying the example `.env`:
 
 ```sh
 cp .env.example .env
@@ -20,14 +20,14 @@ cp .env.example .env
 
 Then customize the `.env` file. You'll need to provide values for:
 
-- `DATABASE_URL`: The url to you database.
+- `DATABASE_URL`: The url of your database.
 - `AUTH_SECRET`: The secret Auth.js uses. Can be generated using `openssl rand -base64 32`
 - `GITHUB_ID`: The id of your GitHub OAuth client.
 - `GITHUB_SECRET`: The secret of your GitHub OAuth client.
 - `SECRET_STRIPE_KEY`: Your Stripe API secret key.
 - `STRIPE_WEBHOOK_SECRET`: Your Stripe secret for webhooks.
 
-Install all packages:
+Install the dependencies:
 
 ```sh
 pnpm install
@@ -73,7 +73,7 @@ prisma db seed
 
 ## Video course
 
-If you'd like to learn more, check out the full video here:
+For more info, here's the full video:
 https://joshuanussbaum.podia.com/build-a-saas-with-sveltekit
 
 ## License
