@@ -1,7 +1,6 @@
 # SvelteKit SaaS Demo
 
 Code examples from the video course [Build a SaaS with SvelteKit](https://joshuanussbaum.podia.com/build-a-saas-with-sveltekit)
-## Setup environment
 
 ## Features
 
