@@ -8,7 +8,7 @@ Code examples from the video course [Build a SaaS with SvelteKit](https://joshua
 - Database with Prisma
 - Plans & pricing page
 - Payments with Stripe Checkout
-- Syncing Stripe webhook events with account
+- Syncing subscription status via webhooks
 
 ## Setup
 
