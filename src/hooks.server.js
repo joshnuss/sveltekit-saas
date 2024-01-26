@@ -47,12 +47,6 @@ const authenticate = SvelteKitAuth({
 			clientSecret: env.GITHUB_SECRET
 		})
 	],
-	session: {
-		// temporary workaround
-		generateSessionToken() {
-			return crypto.randomUUID()
-		}
-	},
 	callbacks: {
 		async session({ session, user }) {
 			if (user.planId) {
